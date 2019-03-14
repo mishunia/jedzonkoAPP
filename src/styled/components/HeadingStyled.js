@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const HeadingStyled = styled.h1`
   font-size: ${props => props.theme.fontsize.xl};
   color: ${props =>
-    props.primary ? props.theme.color.white : props.theme.color.primary};
+    props.primary ? props.theme.color.white : props.theme.color.dark};
   font-weight: ${props => props.theme.weight.bold};
 `
 

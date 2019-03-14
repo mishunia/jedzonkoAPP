@@ -38,10 +38,15 @@ class menuItem extends Component {
     const { image, name, price, desc, status, label } = this.props.details
     const { match } = this.props
     const isAvailable = status === 'available'
+
     return (
       <MenuListItemStyled>
         {/* <Link to={`${match.url}/${this.props.index}`}> */}
-        <Link key={this.props.index} to={`pozdro/${this.props.index}`}>
+        <Link
+          key={this.props.index}
+          to={`pozdro/${this.props.index}`}
+          params={{ testvalue: 'hello' }}
+        >
           <MenuItemStyled>
             <MenuItemMediaStyled>
               <MenuItemMediaPhotoStyled
@@ -86,10 +91,10 @@ class menuItem extends Component {
         <BrowserRouter>
           <Switch>
             <Route
-              item={this.props.details}
               path={`pozdro/${this.props.index}`}
-              component={Product}
-              someProp={100}
+              render={routeProps => (
+                <Product {...routeProps} currentStep={this.state.currentStep} />
+              )}
             />
           </Switch>
         </BrowserRouter>

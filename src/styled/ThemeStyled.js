@@ -6,6 +6,7 @@ const theme = {
 
     primary: '#dd1021',
     secondary: '#ed3d4c',
+    dark: '#4c4c4c',
 
     lightGray: '#e5e5e5',
     lighterGray: '#f7f7f7',
@@ -27,7 +28,7 @@ const theme = {
     l: '30px',
     m: '24px',
     s: '16px',
-    xs: '12px'
+    xs: '14px'
   },
   weight: {
     bold: 700,

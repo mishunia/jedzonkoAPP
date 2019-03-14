@@ -18,7 +18,12 @@ const Router = () => (
         <Switch>
           <Route exact path="/" component={StorePicker} />
           <Route path="/shop" component={App} />
-          <Route path="/pozdro/:productId" component={Product} />
+          <Route
+            path="/pozdro/:productId"
+            render={routeProps => (
+              <Product {...routeProps} currentStep={'lol'} />
+            )}
+          />
           <Route component={NotFoundPage} />
         </Switch>
       </React.Fragment>

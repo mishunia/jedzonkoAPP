@@ -92,6 +92,14 @@ export default class App extends Component {
     })
   }
 
+  removeFromCart = key => {
+    const cart = { ...this.state.cart }
+    delete cart[key]
+    this.setState({
+      cart
+    })
+  }
+
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -120,7 +128,11 @@ export default class App extends Component {
                   ))}
                 </MenuListStyled>
               </div>
-              <Order foods={this.state.foods} cart={this.state.cart} />
+              <Order
+                foods={this.state.foods}
+                cart={this.state.cart}
+                removeFromCart={this.props.removeFromCart}
+              />
               <Inventory
                 foods={this.state.foods}
                 addFood={this.addFood}

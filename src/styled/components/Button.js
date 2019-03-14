@@ -21,6 +21,26 @@ const ButtonStyled = styled.button`
     cursor: default;
   }
 `
+
+const ButtonStyledLarge = styled(ButtonStyled)`
+  font-size: ${props => props.theme.fontsize.l};
+  transform: skew(-21deg);
+  padding: 20px 40px;
+
+  span {
+    display: block;
+    transform: skew(21deg);
+    transition: 0.3s ease;
+  }
+  &:hover {
+    transform: skew(0deg);
+    background-color: ${props => props.theme.color.primary};
+  }
+  &:hover span {
+    transform: skew(0deg);
+  }
+`
+
 const ButtonCancelStyled = styled(ButtonStyled)`
   background-color: ${props => props.theme.color.red};
   padding: ${props => props.theme.size.gutter_3};
@@ -30,4 +50,4 @@ const ButtonCancelStyled = styled(ButtonStyled)`
   }
 `
 
-export { ButtonStyled, ButtonCancelStyled }
+export { ButtonStyled, ButtonStyledLarge, ButtonCancelStyled }
