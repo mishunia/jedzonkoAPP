@@ -97,7 +97,7 @@ export default class App extends Component {
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <BaseStyled />
-          <Header tagline="jedzonko APP" />
+          {/* <Header tagline="jedzonko APP" /> */}
           <InnerStyled>
             <LayoutStyled>
               {/* <FoodList /> */}
