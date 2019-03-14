@@ -13,6 +13,13 @@ import { InnerStyled } from './../styled/components/InnerStyled'
 import { LayoutStyled } from './../styled/components/LayoutStyled'
 import styled from 'styled-components'
 import base from '../base'
+import {
+  SectionHeadStyled,
+  SectionHeadSquareStyled,
+  SectionHeadTitleStyled
+} from '../styled/components/SectionHeadStyled'
+
+import { HeadingThirdStyled } from '../styled/components/HeadingStyled'
 
 const MenuListStyled = styled.ul`
   display: flex;
@@ -94,7 +101,12 @@ export default class App extends Component {
           <InnerStyled>
             <LayoutStyled>
               {/* <FoodList /> */}
-
+              <SectionHeadStyled>
+                <SectionHeadSquareStyled />
+                <SectionHeadTitleStyled>
+                  <HeadingThirdStyled>Inventory</HeadingThirdStyled>
+                </SectionHeadTitleStyled>
+              </SectionHeadStyled>
               <div>
                 <MenuListStyled>
                   {Object.keys(this.state.foods).map(food => (
@@ -103,6 +115,7 @@ export default class App extends Component {
                       key={food}
                       details={this.state.foods[food]}
                       addToCart={this.addToCart}
+                      match={this.props.match}
                     />
                   ))}
                 </MenuListStyled>

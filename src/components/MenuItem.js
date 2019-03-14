@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { BrowserRouter, Router, Switch, Route, Link } from 'react-router-dom'
+import Product from '../components/Product/Product'
 import {
   MenuItemStyled,
   MenuItemMediaStyled,
@@ -34,45 +36,63 @@ class menuItem extends Component {
 
   render() {
     const { image, name, price, desc, status, label } = this.props.details
+    const { match } = this.props
     const isAvailable = status === 'available'
     return (
       <MenuListItemStyled>
-        <MenuItemStyled>
-          <MenuItemMediaStyled>
-            <MenuItemMediaPhotoStyled
-              style={{ backgroundImage: `url(${image})` }}
+        {/* <Link to={`${match.url}/${this.props.index}`}> */}
+        <Link key={this.props.index} to={`pozdro/${this.props.index}`}>
+          <MenuItemStyled>
+            <MenuItemMediaStyled>
+              <MenuItemMediaPhotoStyled
+                style={{ backgroundImage: `url(${image})` }}
+              />
+              <MenuItemLabelsContainerStyled>
+                {label
+                  ? label.map((item, _id) => {
+                      return <LabelStyled key={_id}>{item}</LabelStyled>
+                    })
+                  : ''}
+              </MenuItemLabelsContainerStyled>
+            </MenuItemMediaStyled>
+
+            <MenuItemDateStyled>🔥 </MenuItemDateStyled>
+
+            <MenuItemTitleStyled>
+              <TextPrimaryStyled>{name}</TextPrimaryStyled>
+            </MenuItemTitleStyled>
+
+            <MenuItemDescStyled>
+              <TextSecondaryStyled textColor={'gray'}>
+                {desc}
+              </TextSecondaryStyled>
+            </MenuItemDescStyled>
+
+            <MenuItemLabelsStyled>{status}</MenuItemLabelsStyled>
+            <MenuItemPriceStyled>
+              Price: {formatPrice(price)}
+            </MenuItemPriceStyled>
+
+            <MenuItemActionStyled>
+              <ButtonStyled
+                disabled={!isAvailable}
+                onClick={this.handleAddToCart}
+              >
+                {isAvailable ? 'Add to cart 🔥' : 'Sold out'}
+              </ButtonStyled>
+            </MenuItemActionStyled>
+          </MenuItemStyled>
+        </Link>
+        <BrowserRouter>
+          <Switch>
+            <Route
+              item={this.props.details}
+              path={`pozdro/${this.props.index}`}
+              component={Product}
+              someProp={100}
             />
-            <MenuItemLabelsContainerStyled>
-              {label
-                ? label.map((item, _id) => {
-                    return <LabelStyled key={_id}>{item}</LabelStyled>
-                  })
-                : ''}
-            </MenuItemLabelsContainerStyled>
-          </MenuItemMediaStyled>
-
-          <MenuItemDateStyled>🔥 </MenuItemDateStyled>
-
-          <MenuItemTitleStyled>
-            <TextPrimaryStyled>{name}</TextPrimaryStyled>
-          </MenuItemTitleStyled>
-
-          <MenuItemDescStyled>
-            <TextSecondaryStyled textColor={'gray'}>{desc}</TextSecondaryStyled>
-          </MenuItemDescStyled>
-
-          <MenuItemLabelsStyled>{status}</MenuItemLabelsStyled>
-          <MenuItemPriceStyled>Price: {formatPrice(price)}</MenuItemPriceStyled>
-
-          <MenuItemActionStyled>
-            <ButtonStyled
-              disabled={!isAvailable}
-              onClick={this.handleAddToCart}
-            >
-              {isAvailable ? 'Add to cart 🔥' : 'Sold out'}
-            </ButtonStyled>
-          </MenuItemActionStyled>
-        </MenuItemStyled>
+          </Switch>
+        </BrowserRouter>
       </MenuListItemStyled>
     )
   }

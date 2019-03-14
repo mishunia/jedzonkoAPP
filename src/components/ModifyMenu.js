@@ -9,6 +9,10 @@ export default class ModifyMenu extends Component {
     }
     this.props.modifyFood(this.props.index, updatedFood)
   }
+
+  handleRemove = e => {
+    this.props.removeFood(this.props.index)
+  }
   render() {
     return (
       <div>
@@ -76,7 +80,7 @@ export default class ModifyMenu extends Component {
           onChange={this.handleChange}
           value={this.props.food.desc}
         />
-        <button type="submit">Add food</button>
+        <button onClick={this.handleRemove}>Remove Item</button>
       </div>
     )
   }

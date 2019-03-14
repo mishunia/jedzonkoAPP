@@ -16,6 +16,7 @@ export default class Inventory extends Component {
             key={item}
             food={this.props.foods[item]}
             modifyFood={this.props.modifyFood}
+            removeFood={this.props.removeFood}
           />
         ))}
       </div>

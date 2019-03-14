@@ -7,6 +7,7 @@ const ProgressBarStyled = styled.div`
   width: 100%;
   height: 10px;
   background-color: green;
+  margin: ${props => props.theme.size.gutter_3} 0;
 `
 
 const ProgressBarStateStyled = styled.div`

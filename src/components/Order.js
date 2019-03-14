@@ -86,7 +86,7 @@ export default class Order extends Component {
       return <li>Sorry {food ? food.name : 'food'} is no loger available</li>
     }
     return (
-      <CartListStyled>
+      <CartListStyled key={item}>
         <CartListItemStyled>
           <CartListItemMediaStyled>
             <img src={food.image} />
@@ -128,6 +128,12 @@ export default class Order extends Component {
       return prevTotal
     }, 0)
     const totalSum = total + deliveryPrice
+
+    let diffTotalFree = freeDelivery - total
+
+    console.log(total)
+    console.log(formatPrice(freeDelivery))
+
     return cartItems.length ? (
       <CartStyled>
         <CartHeadingStyled>
@@ -144,20 +150,28 @@ export default class Order extends Component {
             <CartFooterItemStyled>
               <TextSecondaryStyled>
                 Delivery:
-                {formatPrice(total) >= formatPrice(freeDelivery)
-                  ? 'FREE'
-                  : formatPrice(deliveryPrice)}
+                {total >= freeDelivery ? 'FREE!' : formatPrice(deliveryPrice)}
               </TextSecondaryStyled>
+              <TextSecondaryStyled style={{ marginTop: '10px', color: 'red' }}>
+                {/* Do darmowej przeyslki brakuje:
+                {formatPrice(freeDelivery - total)} */}
+                {diffTotalFree >= 0
+                  ? `
+                  You are missing for free shipping ${formatPrice(
+                    diffTotalFree
+                  )}`
+                  : `FREE SHIPPING`}
+              </TextSecondaryStyled>
+              <FreeDelivery total={total} freeDelivery={freeDelivery} />
             </CartFooterItemStyled>
             <CartFooterItemAltStyled>
               Total sum:
               <strong>
-                {formatPrice(total) > formatPrice(20000)
+                {total >= freeDelivery
                   ? formatPrice(total)
                   : formatPrice(totalSum)}
               </strong>
             </CartFooterItemAltStyled>
-            <FreeDelivery total={total} freeDelivery={freeDelivery} />
           </CartFooterStyled>
         </CartContainerStyled>
       </CartStyled>
