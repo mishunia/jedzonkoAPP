@@ -42,52 +42,50 @@ class menuItem extends Component {
     return (
       <MenuListItemStyled>
         {/* <Link to={`${match.url}/${this.props.index}`}> */}
-        <Link
-          key={this.props.index}
-          to={`pozdro/${this.props.index}`}
-          params={{ testvalue: 'hello' }}
-        >
-          <MenuItemStyled>
-            <MenuItemMediaStyled>
+
+        <MenuItemStyled>
+          <MenuItemMediaStyled>
+            <Link
+              key={this.props.index}
+              to={`pozdro/${this.props.index}`}
+              params={{ testvalue: 'hello' }}
+            >
               <MenuItemMediaPhotoStyled
                 style={{ backgroundImage: `url(${image})` }}
               />
-              <MenuItemLabelsContainerStyled>
-                {label
-                  ? label.map((item, _id) => {
-                      return <LabelStyled key={_id}>{item}</LabelStyled>
-                    })
-                  : ''}
-              </MenuItemLabelsContainerStyled>
-            </MenuItemMediaStyled>
+            </Link>
+            <MenuItemLabelsContainerStyled>
+              {label
+                ? label.map((item, _id) => {
+                    return <LabelStyled key={_id}>{item}</LabelStyled>
+                  })
+                : ''}
+            </MenuItemLabelsContainerStyled>
+          </MenuItemMediaStyled>
 
-            <MenuItemDateStyled>🔥 </MenuItemDateStyled>
+          <MenuItemDateStyled>🔥 </MenuItemDateStyled>
 
-            <MenuItemTitleStyled>
-              <TextPrimaryStyled>{name}</TextPrimaryStyled>
-            </MenuItemTitleStyled>
+          <MenuItemTitleStyled>
+            <TextPrimaryStyled>{name}</TextPrimaryStyled>
+          </MenuItemTitleStyled>
 
-            <MenuItemDescStyled>
-              <TextSecondaryStyled textColor={'gray'}>
-                {desc}
-              </TextSecondaryStyled>
-            </MenuItemDescStyled>
+          <MenuItemDescStyled>
+            <TextSecondaryStyled textColor={'gray'}>{desc}</TextSecondaryStyled>
+          </MenuItemDescStyled>
 
-            <MenuItemLabelsStyled>{status}</MenuItemLabelsStyled>
-            <MenuItemPriceStyled>
-              Price: {formatPrice(price)}
-            </MenuItemPriceStyled>
+          <MenuItemLabelsStyled>{status}</MenuItemLabelsStyled>
+          <MenuItemPriceStyled>Price: {formatPrice(price)}</MenuItemPriceStyled>
 
-            <MenuItemActionStyled>
-              <ButtonStyled
-                disabled={!isAvailable}
-                onClick={this.handleAddToCart}
-              >
-                {isAvailable ? 'Add to cart 🔥' : 'Sold out'}
-              </ButtonStyled>
-            </MenuItemActionStyled>
-          </MenuItemStyled>
-        </Link>
+          <MenuItemActionStyled>
+            <ButtonStyled
+              disabled={!isAvailable}
+              onClick={this.handleAddToCart}
+            >
+              {isAvailable ? 'Add to cart 🔥' : 'Sold out'}
+            </ButtonStyled>
+          </MenuItemActionStyled>
+        </MenuItemStyled>
+
         <BrowserRouter>
           <Switch>
             <Route
