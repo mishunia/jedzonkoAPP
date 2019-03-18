@@ -91,9 +91,9 @@ export default class App extends Component {
     })
   }
 
-  removeFromCart = item => {
+  removeFromCart = key => {
     const cart = { ...this.state.cart }
-    delete cart[item]
+    delete cart[key]
     this.setState({
       cart
     })
@@ -106,7 +106,7 @@ export default class App extends Component {
           <BaseStyled />
           <InnerStyled>
             <LayoutStyled>
-              <Filters foods={this.state.foods} />
+              <Filters />
               <SectionHeadStyled>
                 <SectionHeadSquareStyled />
                 <SectionHeadTitleStyled>
