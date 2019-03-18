@@ -3,6 +3,9 @@ import AddFood from './AddFood'
 import ModifyMenu from './ModifyMenu'
 
 export default class Inventory extends Component {
+  componentDidMount() {
+    console.log(this.props.foods)
+  }
   render() {
     return (
       <div>

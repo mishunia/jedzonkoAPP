@@ -47,8 +47,8 @@ const CartContentStyled = styled.div`
 `
 
 const CartFooterStyled = styled.div`
-  padding: ${props => props.theme.size.gutter_2}
-    ${props => props.theme.size.gutter};
+  padding: ${props => props.theme.size.gutter_2};
+  ${props => props.theme.size.gutter};
   border-top: 1px solid ${props => props.theme.color.primary};
 `
 

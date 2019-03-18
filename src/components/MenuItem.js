@@ -47,7 +47,11 @@ class menuItem extends Component {
           <MenuItemMediaStyled>
             <Link
               key={this.props.index}
-              to={`pozdro/${this.props.index}`}
+              // to={`pozdro/${this.props.index}`}
+              to={{
+                pathname: `pozdro/${this.props.index}`,
+                state: { modal: true }
+              }}
               params={{ testvalue: 'hello' }}
             >
               <MenuItemMediaPhotoStyled

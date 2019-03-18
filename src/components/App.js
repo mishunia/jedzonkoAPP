@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import Header from './Header'
 import FoodList from './FoodList'
 import Inventory from './Inventory'
 import Order from './Order'
 import MenuItem from './MenuItem'
-//import Test from './HomeSlider'
+import Filters from './Filters'
 import sampleFood from './../helpers/SampleFood'
 import { ThemeProvider } from 'styled-components'
 import BaseStyled from './../styled/BaseStyled'
@@ -92,9 +91,9 @@ export default class App extends Component {
     })
   }
 
-  removeFromCart = key => {
+  removeFromCart = item => {
     const cart = { ...this.state.cart }
-    delete cart[key]
+    delete cart[item]
     this.setState({
       cart
     })
@@ -105,10 +104,9 @@ export default class App extends Component {
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <BaseStyled />
-          {/* <Header tagline="jedzonko APP" /> */}
           <InnerStyled>
             <LayoutStyled>
-              {/* <FoodList /> */}
+              <Filters foods={this.state.foods} />
               <SectionHeadStyled>
                 <SectionHeadSquareStyled />
                 <SectionHeadTitleStyled>
